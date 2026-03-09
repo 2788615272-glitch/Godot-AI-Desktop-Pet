@@ -4,7 +4,7 @@
 ![LLM Integration](https://img.shields.io/badge/AI-Vision%20%7C%20ASR%20%7C%20TTS-orange)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-A lightweight, fully native multi-modal AI desktop pet framework built with Godot 4. It watches your screen, listens to your voice, remembers your gaming fails, and roasts you in real-time.
+A lightweight, fully native multi-modal AI desktop pet framework built with Godot 4. It watches your screen, listens to your voice, remembers your gaming fails, and roasts you in real-time. 
 
 这是一个基于 Godot 4 引擎原生开发的多模态 AI 桌宠底层框架。它能看懂你的屏幕、听懂你的语音、记住你的下饭操作，并以极低的性能损耗在桌面上实时吐槽你。
 
@@ -22,20 +22,18 @@ A lightweight, fully native multi-modal AI desktop pet framework built with Godo
 ## 🚀 快速开始 (Getting Started)
 
 ### 选项 A：直接运行成品 (玩家推荐)
-如果你下载了打包好的版本（如 `desktop lab29.exe`），请按照以下步骤启动：
+请在右侧的 **Releases** 标签页下载最新打包的 `.zip` 文件，解压后按照以下步骤启动：
 
 1. **双击启动:** 运行 `desktop lab29.exe`，你会看到一颗黄色的果冻小球从屏幕上方掉落到桌面中间。
 2. **呼出控制台:** 在电脑右下角的任务栏托盘中，找到小球的图标。**右键点击图标 -> 选择“⚙️ 显示控制台”**，即可呼出 UI 设置面板。
 3. **注入灵魂 (配置密钥):** 在控制台的输入框内，**严格使用竖线 `|` 分隔**，填入你的四段 API 信息：
-   ```text
-   豆包API密钥|视觉模型EP接入点|极速文本模型EP接入点|硅基流动API密钥
-(例如：sk-xxx|ep-20260306165408-5kf2b|ep-20260308114842-dbhk5|sk-silicon...)
-4. 开始互动: 按住鼠标可以拖拽小球；按住快捷键（默认 V 键）对麦克风说话即可触发互动。
+   ```text
+   豆包API密钥|视觉模型EP接入点|极速文本模型EP接入点|硅基流动API密钥
+(例如：sk-xxx|ep-2026...|ep-2026...|sk-silicon...)
+4. 开始互动: 按住鼠标可以拖拽小球；直接对着麦克风说话即可触发互动。
 
 选项 B：源码运行 (开发者推荐)
-下载本仓库，使用 Godot 4.x 打开 project.godot。
-
-(开发者注)：如果你发现 UI 填入失效，请检查 ai_manager.gd 脚本中，是否需要手动填写 SF_AS_KEY (硅基密钥) 常量。
+下载本仓库源码，使用 Godot 4.x 打开 project.godot。
 
 点击右上角“运行项目”即可进入调试模式。
 
