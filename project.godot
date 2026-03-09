@@ -1,0 +1,42 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="desktop lab"
+run/main_scene="uid://c8slov8j3d7eo"
+config/features=PackedStringArray("4.6", "Forward Plus")
+config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://0lfytg0lmmes"
+general/text_to_speech=true
+driver/enable_input=true
+
+[display]
+
+window/size/borderless=true
+window/size/transparent=true
+window/per_pixel_transparency/allowed=true
+window/vsync/vsync_mode=0
+
+[physics]
+
+common/physics_ticks_per_second=120
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+viewport/transparent_background=true
+2d/snap/snap_2d_transforms_to_pixel=true

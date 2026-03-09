@@ -1,0 +1,174 @@
+[gd_scene format=3 uid="uid://c8slov8j3d7eo"]
+
+[ext_resource type="Script" uid="uid://2hinfwfmogej" path="res://character_body_2d.gd" id="1_ij6vw"]
+[ext_resource type="Texture2D" uid="uid://da7m2o1iw3ojp" path="res://unnamed (5).png" id="2_ghijl"]
+[ext_resource type="Texture2D" uid="uid://yb48ju4msfes" path="res://assets/face_idle.png" id="3_44cfe"]
+[ext_resource type="Script" uid="uid://dq6fhtxb2s3sc" path="res://ai_manager.gd" id="4_dd465"]
+[ext_resource type="Script" uid="uid://dtqc3060dyvhy" path="res://api_connector.gd" id="5_4sjlk"]
+[ext_resource type="Script" uid="uid://dad8uxi0hxyww" path="res://ui_manager.gd" id="5_lhvu3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_44cfe"]
+radius = 244.34607
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ghijl"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="LabelSettings" id="LabelSettings_44cfe"]
+font_size = 14
+font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_dd465"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=834599275]
+physics_interpolation_mode = 1
+position = Vector2(562, 327)
+script = ExtResource("1_ij6vw")
+
+[node name="Body" type="Sprite2D" parent="." unique_id=1732361200]
+texture_repeat = 1
+position = Vector2(0, 0.25)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_ghijl")
+
+[node name="Face" type="Sprite2D" parent="Body" unique_id=1728155322]
+texture_repeat = 1
+position = Vector2(0, -2.5)
+scale = Vector2(0.7999999, 0.87999994)
+texture = ExtResource("3_44cfe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=836420680]
+position = Vector2(1.1920929e-07, -2.3841858e-07)
+scale = Vector2(0.1, 0.1)
+shape = SubResource("CircleShape2D_44cfe")
+
+[node name="SpeechBubble" type="Control" parent="." unique_id=1668046189]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 12.0
+offset_top = -60.0
+offset_right = 52.0
+offset_bottom = -20.0
+
+[node name="PanelContainer" type="PanelContainer" parent="SpeechBubble" unique_id=446417561]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 1.0
+offset_right = 284.0
+offset_bottom = 41.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ghijl")
+
+[node name="Label" type="Label" parent="SpeechBubble/PanelContainer" unique_id=1632339480]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_44cfe")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="AIManager" type="Node" parent="." unique_id=236647411]
+script = ExtResource("4_dd465")
+
+[node name="API_Connector" type="Node" parent="." unique_id=443164620]
+script = ExtResource("5_4sjlk")
+metadata/_custom_type_script = "uid://dq6fhtxb2s3sc"
+
+[node name="UIManager" type="CanvasLayer" parent="." unique_id=873469602]
+script = ExtResource("5_lhvu3")
+
+[node name="Panel" type="Panel" parent="UIManager" unique_id=1640588243]
+custom_minimum_size = Vector2(400, 300)
+offset_left = 365.0
+offset_top = 112.0
+offset_right = 765.0
+offset_bottom = 499.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIManager/Panel" unique_id=1519972993]
+layout_mode = 0
+offset_right = 403.0
+offset_bottom = 300.0
+
+[node name="Label" type="Label" parent="UIManager/Panel/VBoxContainer" unique_id=2073287069]
+layout_mode = 2
+text = "桌宠控制中心"
+
+[node name="ModelSelect" type="OptionButton" parent="UIManager/Panel/VBoxContainer" unique_id=473988844]
+layout_mode = 2
+
+[node name="APIKeyInput" type="LineEdit" parent="UIManager/Panel/VBoxContainer" unique_id=497298928]
+layout_mode = 2
+text = "AIzaSyARmVBNS0yrjqQDCjoh_iycLha5dFofKFY"
+secret = true
+
+[node name="GetKeyButton" type="Button" parent="UIManager/Panel/VBoxContainer" unique_id=1089800100]
+layout_mode = 2
+text = "点击免费获取 API 密钥"
+
+[node name="TempSlider" type="HSlider" parent="UIManager/Panel/VBoxContainer" unique_id=1769734303]
+layout_mode = 2
+min_value = 0.1
+max_value = 1.0
+step = 0.1
+value = 0.7999999999999999
+
+[node name="AutoToggle" type="CheckButton" parent="UIManager/Panel/VBoxContainer" unique_id=1460169776]
+layout_mode = 2
+text = "启用 AI 自动变速 (Auto Mode)"
+
+[node name="IntervalContainer" type="HBoxContainer" parent="UIManager/Panel/VBoxContainer" unique_id=2140167414]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIManager/Panel/VBoxContainer/IntervalContainer" unique_id=727576793]
+layout_mode = 2
+text = "截图间隔(秒)"
+
+[node name="IntervalSlider" type="HSlider" parent="UIManager/Panel/VBoxContainer/IntervalContainer" unique_id=1036402896]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.5
+max_value = 5.0
+step = 0.1
+value = 1.5
+
+[node name="IntervalValLabel" type="Label" parent="UIManager/Panel/VBoxContainer/IntervalContainer" unique_id=401029635]
+layout_mode = 2
+text = "1.5"
+
+[node name="BatchContainer" type="HBoxContainer" parent="UIManager/Panel/VBoxContainer" unique_id=1006036830]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIManager/Panel/VBoxContainer/BatchContainer" unique_id=456694353]
+layout_mode = 2
+text = "连拍张数"
+
+[node name="BatchSlider" type="HSlider" parent="UIManager/Panel/VBoxContainer/BatchContainer" unique_id=273963986]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 2.0
+max_value = 6.0
+value = 4.0
+
+[node name="BatchValLabel" type="Label" parent="UIManager/Panel/VBoxContainer/BatchContainer" unique_id=627720858]
+layout_mode = 2
+
+[node name="lang_dropdown" type="OptionButton" parent="UIManager/Panel/VBoxContainer" unique_id=2043066678]
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "中文"
+popup/item_0/id = 0
+popup/item_1/text = "日本語"
+popup/item_1/id = 1
+popup/item_2/text = "English"
+popup/item_2/id = 2
+
+[node name="Ear" type="AudioStreamPlayer" parent="." unique_id=1483129495]
+stream = SubResource("AudioStreamMicrophone_dd465")
+autoplay = true
+bus = &"Record"
